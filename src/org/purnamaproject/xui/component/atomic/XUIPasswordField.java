@@ -1,0 +1,53 @@
+package org.purnamaproject.xui.component.atomic;
+
+/**
+ * @(#)XUIPasswordField.java    0.5 18/08/2003
+ *
+ * The Purnama Project XUI (XML-based User Interface) API is an set of program
+ * calls that utilize the XUI tagset and perform the task of creating a user
+ * interface. The Purnama version of this API is specific using Java as the platform
+ * but other XUI APIs may use other libraries and platforms. The Purnama XUI API
+ * supports the creation of Swing components, adding, deleting and laying out
+ * components. It also supports dynamic binding of business logic to the user
+ * interface.
+ *
+ * Copyright (c) 2003 Arron Ferguson
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * For more information, please contact Arron Ferguson at:
+ * e-mail: arron_ferguson@bcit.ca
+ * snail-mail: SW2 - 124, 3700 Willingdon Avenue, Burnaby, British Columbia, Canada, V5G 3H2
+ * Web: http://xml.bcit.ca/PurnamaProject/
+ *
+ */
+
+
+/**
+ * This atomic component represents a single line of editable text that the user can
+ * use to enter in textual data. Any data placed in this field however, will be displayed
+ * as bullets or asterisk characters. It is to be used to mask visual clarification as to
+ * what was typed. This is most useful as a password field for the end user. Any listeners
+ * that are registered with this component can, will be informed when the user presses the
+ * enter key.
+ *
+ * @version    0.5 18/08/2003
+ * @author     Arron Ferguson
+ */
+public interface XUIPasswordField extends XUITextField
+{
+
+
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xui:XUI
+    xmlns:xui="http://xml.bcit.ca/PurnamaProject/2003/xui"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.bcit.ca/PurnamaProject/2003/xui ../../xui.xsd" 
+    id="http://xml.bcit.ca/PurnamaProject/components">
+  <xui:Window id="Window_01" x="400" y="300" width="400" height="300"
+  name="Basic Panel" visible="true">
+    <xui:GridLayout width="1" height="1"/>
+    <xui:TabbedPanel x="0" y="0" width="1" height="1" id="tabbedpanel_0">
+      <xui:Panel x="0" y="0" width="1" height="1" name="Calendar" id="panel_0"
+      idref="tabbedpanel_0">
+        <xui:GridLayout width="4" height="4"/>
+        <xui:Calendar x="0" y="0" width="4" height="3" id="calendar_0"/>
+      </xui:Panel>
+      <xui:Panel x="0" y="0" width="1" height="1" name="Big Button"
+      id="panel_1" idref="tabbedpanel_0">
+        <xui:GridLayout width="4" height="4"/>
+        <xui:Button x="0" y="0" width="4" height="3" id="button_0" enabled="true"
+        label="OK" orientation="horizontal"/>
+      </xui:Panel>
+    </xui:TabbedPanel>
+  </xui:Window>
+</xui:XUI>

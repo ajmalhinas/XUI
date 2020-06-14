@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xui:XUI
+    xmlns:xui="http://xml.bcit.ca/PurnamaProject/2003/xui"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.bcit.ca/PurnamaProject/2003/xui ../../xui.xsd" 
+    id="http://xml.bcit.ca/PurnamaProject/components">
+  <xui:Window id="Window_01" x="400" y="300" width="600" height="400" name="Atomic Components" visible="true">
+    <xui:GridLayout width="1" height="1"/>
+    <xui:Panel x="0" y="0" width="1" height="1" id="panel_0" name="Main">
+      <xui:GridLayout width="15" height="15"/>
+      <xui:SliderBar x="7" y="1" width="8" height="2" enabled="true" orientation="horizontal" cursorPosition="50" visualMeasureIncrement="20" maxValue="100" id="slider_0"></xui:SliderBar>
+      <xui:SliderBar x="2" y="10" width="2" height="10" enabled="true" orientation="vertical" cursorPosition="25" visualMeasureIncrement="10" maxValue="100" id="slider_1"></xui:SliderBar>
+    </xui:Panel>
+  </xui:Window>
+</xui:XUI>

@@ -1,0 +1,89 @@
+<?xml version='1.0'?>
+
+<!-- builds the XUI API and documentation for it. -->
+<!--  Copyright (c) 2003 Arron Ferguson -->
+<project name="XUI API 0.1" default="clean" basedir=".">
+
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist" location="dist"/>
+  <property name="docs" location="docs"/>
+  <property name="libs" location="thirdparty/libs"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init" description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}">
+      <classpath>
+        <pathelement path="${libs}/GIF89Encoder090b.jar"/>
+        <pathelement path="${libs}/commons-codec-1.3.jar"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="dist" depends="compile" description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/${libs}"/>
+    <!-- If you want, use xui-api-${DSTAMP}.jar for the name -->
+    <jar jarfile="${libs}/xui-api-0.5.jar" basedir="${build}">
+      <fileset dir="${docs}">
+        <include name="media/logo.gif"/>
+        <include name="media/happyface.gif"/>
+      </fileset>
+      <manifest>
+        <attribute name="Main-Class" value="org.purnamaproject.xui.helpers.XUITest"/>
+        <attribute name="Specification-Title" value="Purnama XUI"/>
+        <attribute name="Specification-Vendor" value="Arron Ferguson"/>
+        <attribute name="Specification-Version" value="0.5"/>
+        <attribute name="Implementation-Title" value="Purnama XUI"/>
+        <attribute name="Implementation-Vendor" value="Arron Ferguson"/>
+        <attribute name="Implementation-Version" value="0.5"/>
+        <attribute name="Class-Path" value="commons-codec-1.3.jar GIF89Encoder090b.jar"/>
+      </manifest>
+
+    </jar>
+  </target>
+
+  <target name="dodocs" depends="dist" >
+    <!-- build javadocs -->
+    <mkdir dir="${docs}/api"/>
+    <javadoc packagenames="org.purnamaproject.xui.*"
+      additionalparam="-breakiterator" Overview="src/overview.html"
+      private="false" author="true" version="true" use="true" destdir="${docs}/api"
+      stylesheetfile="${docs}/xuistylesheet.css" windowtitle="XUI API Documentation"
+      >
+
+      <fileset dir="src">
+        <include name="org/purnamaproject/xui/**"/>
+        <exclude name="org/purnamaproject/xui/*.html"/>
+        <exclude name="org/purnamaproject/xui/binding/*.html"/>
+        <exclude name="org/purnamaproject/xui/component/*.html"/>
+        <exclude name="org/purnamaproject/xui/component/atomic/*.html"/>
+        <exclude name="org/purnamaproject/xui/component/composite/*.html"/>
+        <exclude name="org/purnamaproject/xui/component/container/*.html"/>
+        <exclude name="org/purnamaproject/xui/component/container/intermediate/*.html"/>
+        <exclude name="org/purnamaproject/xui/component/container/toplevel/*.html"/>
+        <exclude name="org/purnamaproject/xui/component/menu/*.html"/>
+        <exclude name="org/purnamaproject/xui/helpers/*.html"/>
+        <exclude name="org/purnamaproject/xui/impl/*.html"/>
+        <exclude name="org/purnamaproject/xui/peer/*.html"/>
+      </fileset>
+      <doctitle><![CDATA[<h3>Purnama XUI API 0.5</h3>]]></doctitle>
+      <bottom><![CDATA[<i>Copyright &#169; 2003 Arron Ferguson</i>]]></bottom>
+    </javadoc>
+  </target>
+
+ <target name="clean" depends="dist" description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+
+</project>

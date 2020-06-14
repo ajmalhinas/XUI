@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>org.purnamaproject.xui package</title>
+<!--
+
+  @(#)package.html	1.60 98/01/27
+
+  Copyright 1993-1997 Sun Microsystems, Inc. 901 San Antonio Road, 
+  Palo Alto, California, 94303, U.S.A.  All Rights Reserved.
+
+  This software is the confidential and proprietary information of Sun
+  Microsystems, Inc. ("Confidential Information").  You shall not
+  disclose such Confidential Information and shall use it only in
+  accordance with the terms of the license agreement you entered into
+  with Sun.
+
+  CopyrightVersion 1.2
+
+-->
+</head>
+<body bgcolor="white">
+Provides classes and interfaces for handling the core set of functionality when 
+dealing with a XUI document. This package provides immediate functionality for 
+the user to read in a XUI document and begin creating user interfaces with XML 
+documents. 
+<h2> Reading in a document</h2>
+<p>Actually, within the XML community the proper term is '<i>unmarshalling</i>' 
+  especially when it means that the XML document will be turned into something 
+  other than XML. Of course in the Object Oriented world of programming in the 
+  very least this will turn the document into a DOM (document object model). In 
+  the world of XUI however, this means going further than that. In XUI the XML 
+  is unmarshalled and then turned into a graphical user interface (GUI). Let's 
+  look at an example. In order to read in a XUI document we use the following 
+  Java code: 
+<pre>try<br>{<br>   // from a file, parse, build, serialize.<br>   XUIBuilder builder = XUIBuilderFactory.getInstance().getXUIBuilder();  // <b>(1)</b>
+<br>   builder.parse(&quot;mygui.xml&quot;); // <b>(2)</b>
+<br>   XUI xui = builder.getXUIDocument();  // <b>(3)</b>
+<br>   // display it<br>   xui.visualize();  // <b>(4)</b>
+<br>} catch (IOException ioe)
+{
+   ioe.printStackTrace();
+
+} catch (XUIParseException xpe)
+{
+   xpe.printStackTrace();
+
+}</pre>
+<p>Based on the above code, this will (1) get ahold of a <font face="Courier New, Courier, mono">XUIBuilder</font> 
+  using the <font face="Courier New, Courier, mono">XUIBuilderFactory</font>. 
+  The factory is important in hiding the details of the builder since the builder's 
+  inheritance and helper classes are not important. The fact that it returns something 
+  meaninful is important. The next step winds up being to call the builder's parse 
+  method. This requires handing the builder's parse method a file name. The next 
+  step is to ask the builder to return the <font face="Courier New, Courier, mono">XUI 
+  </font>document. The XUI document is an unmarshalled version of the xml document. 
+  It contains all of the user interface code that has been built and represented 
+  based on what was found inside of the XML document. Lastly we request the XUI 
+  document to 'visualize' itself. This is the last and final step in displaying 
+  a graphical version of the XUI document. The last part of the document is simple 
+  exception handling and is required. 
+<p>As the above example shows, it is not overly complex for creating a GUI based 
+  from the XUI API.
+<p>&nbsp;
+<h2>Going One Step Further </h2>
+<p>The above example is nice. It shows how to bring up a user interface. If you've 
+  already tried the above code in one of your own Java classes, you've quickly 
+  realized a major limitation. There is no event handling. The following code 
+  shows the extra line of code to do the binding:
+<pre>
+
+try<br>{<br>   // from a file, parse, build, serialize.<br>   XUIBuilder builder = XUIBuilderFactory.getInstance().getXUIBuilder();  // <b>(1)</b>
+<br>   builder.parse(&quot;mygui.xml&quot;); // <b>(2)</b>
+<br>   XUI xui = builder.getXUIDocument();  // <b>(3)</b>
+<br>   // display it<br>   xui.visualize();  // <b>(4)</b>
+
+   // bind it<br>   <b>xui.bind();</b>  // <b>(5)</b>
+
+<br>} catch (IOException ioe)
+{
+   ioe.printStackTrace();
+
+} catch (XUIParseException xpe)
+{
+   xpe.printStackTrace();
+
+} catch (XUIBindingException xbe)
+{
+   xbe.printStackTrace();
+}
+</pre>
+<p>&nbsp;
+<h2>Back Out As XML</h2>
+<p>Binding will bind any outside libraries to the GUI. There is one more exception 
+  that has to be caught. Of course this all implies that libaries have already 
+  been built and are sitting at some URL (local or remote) and are bundled in 
+  a Java archive and waiting to be used. One last example shows how to send out 
+  the document back as XML. As above we called bringing in the XML document unmarshalling. 
+  So what do we call it when we save the XML document back out? You guessed it, 
+  '<i>marshalling</i>'. 
+<pre>try<br>{<br>   // from a file, parse, build, serialize.<br>   XUIBuilder builder = XUIBuilderFactory.getInstance().getXUIBuilder();  // <b>(1)</b>
+<br>   builder.parse(&quot;mygui.xml&quot;); // <b>(2)</b>
+<br>   XUI xui = builder.getXUIDocument();  // <b>(3)</b>
+<br>   // display it<br>   xui.visualize();  // <b>(4)</b>
+
+   // bind it<br>   xui.bind();  // <b>(5)</b>
+
+   // get root to save out to file<br>   <b>XUINode root = xui.getRoot();</b> // <b>(6)</b>
+<br>   // finally save out to file system<br>   <b>xui.marshalXUI(&quot;parsed_mygui.xml&quot;);</b> // <b>(7)</b>
+
+<br>} catch (IOException ioe)
+{
+   ioe.printStackTrace();
+
+} catch (XUIParseException xpe)
+{
+   xpe.printStackTrace();
+
+} catch (XUIBindingException xbe)
+{
+   xbe.printStackTrace();
+}</pre>
+<p>There you are. You are now capable of visualizing a GUI without writing any 
+  GUI code! Hopefully this gives you an overview of what you can do. For more 
+  information about the XUI API, look at the XUI API guide which is part of this 
+  download or if you didn't download it, visit <a href="http://geekkit.bcit.ca/xui/">The 
+  Purnama Project home page</a>. This guide will give you a much deeper understanding 
+  as to what can be done with this API. As well, be sure to look at the examples 
+  that accompany this API download as well.
+<p>&nbsp;
+<p> Copyright (c) 2003 Arron Ferguson 
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>org.purnamaproject.xui package</title>
+<!--
+
+  @(#)package.html	1.60 98/01/27
+
+  Copyright 1993-1997 Sun Microsystems, Inc. 901 San Antonio Road, 
+  Palo Alto, California, 94303, U.S.A.  All Rights Reserved.
+
+  This software is the confidential and proprietary information of Sun
+  Microsystems, Inc. ("Confidential Information").  You shall not
+  disclose such Confidential Information and shall use it only in
+  accordance with the terms of the license agreement you entered into
+  with Sun.
+
+  CopyrightVersion 1.2
+
+-->
+</head>
+<body bgcolor="white">
+<p>This package only consists of one interface: <font face="Courier New, Courier, mono">XUIContainer</font>, 
+  which is the top abstract class from which all other containers inherit from. 
+  That is to say, it is at the top of the container inheritance hierarchy. Containers 
+  in general are components that, well, '<i>contain</i>' other components. For 
+  example a <font face="Courier New, Courier, mono">XUIWindow</font> allows for 
+  a <font face="Courier New, Courier, mono">XUIPanel</font> to be placed inside 
+  of it. Without this behavior, GUI programmers would not have many options when 
+  creating GUIs.</p>
+<p>Based on the <font face="Courier New, Courier, mono">XUIContainer</font> there 
+  are two other sub types available: 
+<ul>
+  <li>Top-level containers</li>
+  <li>Intermediate containers</li>
+</ul>
+<p>Top level containers are containers that directly interact with the windowing 
+  environment. The types found for top level are:
+<ul>
+  <li><font face="Courier New, Courier, mono">XUIWindow</font></li>
+  <li><font face="Courier New, Courier, mono">XUICustomDialog</font></li>
+  <li><font face="Courier New, Courier, mono">XUISaveFileDialog</font></li>
+  <li><font face="Courier New, Courier, mono">XUIOpenFileDialog</font></li>
+  <li><font face="Courier New, Courier, mono">XUIBasicDialog</font></li>
+</ul>
+<p>Top level containers can contain intermediate containers and menus. Intermediate 
+  containers are containers that are found within top level containers but they 
+  still have the ability to act as a container. Intermediate containers like: 
+<ul>
+  <li><font face="Courier New, Courier, mono">XUIPanel</font></li>
+  <li><font face="Courier New, Courier, mono">XUISplitPanel</font></li>
+  <li><font face="Courier New, Courier, mono">XUITabbedPanel</font></li>
+</ul>
+<p>Each one of these types of components can contain atomic components and composite 
+  components. There is a special relationship with <font face="Courier New, Courier, mono">XUIPanel</font> 
+  and <font face="Courier New, Courier, mono">XUISplitPanel</font> and <font face="Courier New, Courier, mono">XUITabbedPanel</font>. 
+  <font face="Courier New, Courier, mono">XUIPanel</font> directly contains atomic 
+  components whereas <font face="Courier New, Courier, mono">XUISplitPanel</font> 
+  and <font face="Courier New, Courier, mono">XUITabbedPanel</font> only allow 
+  the <font face="Courier New, Courier, mono">XUIPanel</font> to be placed inside 
+  of it. With that special rule understood you will find a rich support of containment 
+  in Purnama Project XUI.
+<p>For more information about the XUI API, look at the XUI API guide which is 
+  part of this download or if you didn't download it, visit <a href="http://geekkit.bcit.ca/xui/">The 
+  Purnama Project home page</a>. This guide will give you a much deeper understanding 
+  as to what can be done with this API. As well, be sure to look at the examples 
+  that accompany this API download as well. 
+<p>&nbsp; 
+<p> Copyright (c) 2003 Arron Ferguson 
+</body>
+</html>
